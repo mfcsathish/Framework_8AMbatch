@@ -21,6 +21,11 @@ public class Locators {
 	public final By nwindow = By.xpath("//*[@id='windowButton']");
 	public final By ntab = By.xpath("//*[@id='tabButton']");
 	
+	//TTD Locators countryS
+	
+	public final By TTD_Country = By.name("countryS");
+	
+	
 
 }
 //Thread.sleep(5000);

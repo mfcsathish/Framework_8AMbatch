@@ -20,7 +20,7 @@ import com.utilities.CommonFunctions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ClassTemplate extends CommonFunctions {
+public class Dropdownhandle extends CommonFunctions {
 
 	Locators loc = new Locators();
 
@@ -62,10 +62,20 @@ public class ClassTemplate extends CommonFunctions {
 		prop.load(propertyfilepath);
 		
 		// typefb url
-				driver.get("");
+				driver.get("https://tirupatibalaji.ap.gov.in/#/registration");
 				driver.manage().window().maximize();
 
 		Thread.sleep(5000);
+		
+		//print aLL dropdown
+		
+		printAllDropdownValues(loc.TTD_Country);
+		
+		System.out.println("***********************************************************************");
+		
+		// select customised option from dropdown and print it
+		
+		selectCustomiseOptionFromTheDropdownValues(loc.TTD_Country, "Jamaica");
 
 	}
 

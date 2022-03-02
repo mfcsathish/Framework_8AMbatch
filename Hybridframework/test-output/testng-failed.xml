@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testscenarios.Screenshot_Assingment">
+      <class name="com.testscenarios.Dropdownhandle">
         <methods>
           <include name="afterClass"/>
-          <include name="takescreenshotofeachmethod"/>
           <include name="f"/>
-          <include name="g"/>
           <include name="beforeClass"/>
         </methods>
-      </class> <!-- com.testscenarios.Screenshot_Assingment -->
+      </class> <!-- com.testscenarios.Dropdownhandle -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

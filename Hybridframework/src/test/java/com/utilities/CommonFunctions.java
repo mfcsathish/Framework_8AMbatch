@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -18,6 +19,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 
@@ -169,5 +171,111 @@ public void takeScreenshot(ITestResult res) throws Exception {
 	}
 
 }
+
+/****************** Dropdown selection **************************************/
+
+public void selectByVisibleText(By locater, String visibleText) {
+
+	WebElement element = driver.findElement(locater);
+	if (element.isDisplayed()) {
+		if (element.isEnabled()) {
+			Select dropdown = new Select(element);
+			dropdown.selectByVisibleText(visibleText);
+		} else {
+			System.out.println("The webelement is NOT Enabled, please check**************");
+		}
+	} else {
+		System.out.println("The webelement is NOT displayed, please check**************");
+	}
+
+}
+
+public void selectByIndex(By locater, int index) {
+	WebElement element = driver.findElement(locater);
+	if (element.isDisplayed()) {
+		// isEnabled()
+		if (element.isEnabled()) {
+			Select dropdown = new Select(element);
+			dropdown.selectByIndex(index);
+		} else {
+			System.out.println("The webelement is NOT Enabled, please check**************");
+		}
+	} else {
+		System.out.println("The webelement is NOT displayed, please check**************");
+	}
+
+}
+
+public void selectByValue(By locater, String value) {
+	WebElement element = driver.findElement(locater);
+	if (element.isDisplayed()) {
+		// isEnabled()
+		if (element.isEnabled()) {
+			Select dropdown = new Select(element);
+			dropdown.selectByValue(value);
+		} else {
+			System.out.println("The webelement is NOT Enabled, please check**************");
+		}
+	} else {
+		System.out.println("The webelement is NOT displayed, please check**************");
+	}
+
+}
+
+public void printAllDropdownValues(By locater) {
+	WebElement element = driver.findElement(locater);
+
+	if (element.isDisplayed()) {
+		// isEnabled()
+		if (element.isEnabled()) {
+			Select dropdown = new Select(element);
+			List<WebElement> dropdownValues = dropdown.getOptions();
+			// Print the size of dropdown values
+			System.out.println(dropdownValues.size());
+			// Print the dropdown values
+			for (WebElement allvalue : dropdownValues) {
+				System.out.println(allvalue.getText());
+			}
+		} else {
+			System.out.println("The webelement is NOT Enabled, please check**************");
+		}
+	} else {
+		System.out.println("The webelement is NOT displayed, please check**************");
+	}
+
+}
+
+public void selectCustomiseOptionFromTheDropdownValues(By locater, String visibleText) {
+	WebElement element = driver.findElement(locater);
+	if (element.isDisplayed()) {
+		// isEnabled()
+		if (element.isEnabled()) {
+
+			Select dropdown = new Select(element);
+			List<WebElement> dropdownValues = dropdown.getOptions();
+			// Print the size of dropdown values
+			System.out.println(dropdownValues.size());
+			// Print the dropdown values
+			for (int i = 0; i < dropdownValues.size(); i++) {
+				System.out.println(dropdownValues.get(i).getText());
+
+				// Select Aug option from the dropdown
+				if (dropdownValues.get(i).getText().equals(visibleText)) {
+					dropdown.selectByIndex(i);
+					break;
+				}
+			}
+
+		} else {
+			System.out.println("The webelement is NOT Enabled, please check**************");
+		}
+	} else {
+		System.out.println("The webelement is NOT displayed, please check**************");
+	}
+
+}
+
+
+
 
 }
