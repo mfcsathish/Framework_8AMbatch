@@ -26,6 +26,17 @@ public class Locators {
 	public final By TTD_Country = By.name("countryS");
 	
 	
+	//Zonal Click
+	
+	public final By zonal = By.xpath("/html/body/table/tbody/tr[6]/td/a");
+	
+	// Toyoto
+	
+	public final By agr = By.xpath("//*[@id='tgbgdpr-overlay-agree']");
+	
+	
+	
+	
 
 }
 //Thread.sleep(5000);

@@ -6,16 +6,19 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -274,6 +277,126 @@ public void selectCustomiseOptionFromTheDropdownValues(By locater, String visibl
 	}
 
 }
+
+
+/************************* Actions ************/
+
+public void moveToOnElement(By locator) {
+	actions = new Actions(driver);
+	try {
+		WebElement element = driver.findElement(locator);
+		
+		actions.moveToElement(element).build().perform();
+	} catch (Exception e) {
+		System.out.println("Error in description: " + e.getStackTrace());
+	}
+}
+
+public void mouseHoverClickandHold(By locator) {
+	actions = new Actions(driver);
+	try {
+		WebElement element = driver.findElement(locator);
+	
+		actions.clickAndHold(element).build().perform();
+	} catch (Exception e) {
+		System.out.println("Error in description: " + e.getStackTrace());
+	}
+
+}
+
+public void mouseHoverContextClick(By locator) {
+	actions = new Actions(driver);
+	try {
+		WebElement element = driver.findElement(locator);
+		
+		actions.contextClick(element).build().perform();
+
+	} catch (Exception e) {
+		System.out.println("Error in description: " + e.getStackTrace());
+	}
+
+}
+
+public void doubleClick(By locator) {
+	actions = new Actions(driver);
+	try {
+		WebElement element = driver.findElement(locator);
+		;
+		actions.doubleClick(element).build().perform();
+
+	} catch (Exception e) {
+		System.out.println("Error in description: " + e.getStackTrace());
+	}
+
+}
+
+public void dragandDrop(By sourceelementLocator, By destinationelementLocator) {
+	
+	actions = new Actions(driver);
+	
+	try {
+		WebElement sourceElement = driver.findElement(sourceelementLocator);
+		WebElement destinationElement = driver.findElement(destinationelementLocator);
+
+		if (sourceElement.isDisplayed() && destinationElement.isDisplayed()) {
+			Actions action = new Actions(driver);
+			action.dragAndDrop(sourceElement, destinationElement).build().perform();
+		} else {
+			System.out.println("Element(s) was not displayed to drag / drop");
+		}
+	} catch (StaleElementReferenceException e) {
+		System.out.println("Element with " + sourceelementLocator + "or" + destinationelementLocator
+				+ "is not attached to the page document " + e.getStackTrace());
+	} catch (NoSuchElementException e) {
+		System.out.println("Element " + sourceelementLocator + "or" + destinationelementLocator
+				+ " was not found in DOM " + e.getStackTrace());
+	} catch (Exception e) {
+		System.out.println("Error occurred while performing drag and drop operation " + e.getStackTrace());
+	}
+}
+
+
+/******************** Frames Handling *******************/
+
+public int iframeCount() {
+	driver.switchTo().defaultContent();
+	js= (JavascriptExecutor) driver;
+	int numberOfFrames = 0;
+	numberOfFrames = Integer.parseInt(js.executeScript("return window.length").toString());
+	System.out.println("Number of iframes on the page are: " + numberOfFrames);
+	return numberOfFrames;
+}
+
+public void switchToFrameByInt(int i) {
+	driver.switchTo().defaultContent();
+	driver.switchTo().frame(i);
+}
+
+public int loopAllFramesForElement(By locator) {
+
+	int elementpresenceCount = 0;
+	int loop = 0;
+	int maxFramaecount = iframeCount();// 6
+	// if given locater has present on webpage, then the element size would be '1'
+	// else '0'
+	elementpresenceCount = driver.findElements(locator).size();// 0
+	while (elementpresenceCount == 0 && loop < maxFramaecount) {
+		try {
+			switchToFrameByInt(loop);
+			elementpresenceCount = driver.findElements(locator).size();// 1
+			System.out.println("Try LoopAllframesAndReturnWebEL : " + loop + "; ElementpresenceCount: "
+					+ elementpresenceCount);
+			if (elementpresenceCount > 0 || loop > maxFramaecount) {
+				break;
+			}
+		} catch (Exception ex) {
+			System.out.println("Catch LoopAllframesAndReturnWebEL Old: " + loop + "; " + ex);
+		}
+		loop++;// 1
+	}
+	return elementpresenceCount;
+}
+
 
 
 

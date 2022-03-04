@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,7 +22,7 @@ import com.utilities.CommonFunctions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Dropdownhandle extends CommonFunctions {
+public class Iframe_Click_Operator extends CommonFunctions {
 
 	Locators loc = new Locators();
 
@@ -48,8 +50,8 @@ public class Dropdownhandle extends CommonFunctions {
 		
 	  }
 
+		
 
-	
 	@Test
 	public void f() throws Exception {
 
@@ -60,23 +62,25 @@ public class Dropdownhandle extends CommonFunctions {
 		prop.load(propertyfilepath);
 		
 		// typefb url
-				driver.get("https://tirupatibalaji.ap.gov.in/#/registration");
+				driver.get("http://mis.nyiso.com/public/");
 				driver.manage().window().maximize();
 
 		Thread.sleep(5000);
-		
-		//print aLL dropdown
-		
-		printAllDropdownValues(loc.TTD_Country);
-		
-		System.out.println("***********************************************************************");
-		
-		// select customised option from dropdown and print it
-		
-		selectCustomiseOptionFromTheDropdownValues(loc.TTD_Country, "Jamaica");
-
-	}
 	
+		// Iframe click operator script
+		
+		loopAllFramesForElement(loc.zonal);
+		clickUsingJavaScript(loc.zonal);
+		//clickbyLocator(loc.zonal);
+		 
+		Thread.sleep(2000);
+		
+		loopAllFramesForElement(By.xpath("/html/body/table/tbody/tr[8]/td[2]/span"));
+		System.out.println(driver.findElement(By.xpath("/html/body/table/tbody/tr[8]/td[2]/span")).getText());
+		
+	}
+		
+
 	
 
 	@AfterClass

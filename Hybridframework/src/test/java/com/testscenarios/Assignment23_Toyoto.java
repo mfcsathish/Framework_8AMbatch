@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,7 +22,7 @@ import com.utilities.CommonFunctions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Dropdownhandle extends CommonFunctions {
+public class Assignment23_Toyoto extends CommonFunctions {
 
 	Locators loc = new Locators();
 
@@ -48,8 +50,10 @@ public class Dropdownhandle extends CommonFunctions {
 		
 	  }
 
+		
 
 	
+
 	@Test
 	public void f() throws Exception {
 
@@ -60,24 +64,26 @@ public class Dropdownhandle extends CommonFunctions {
 		prop.load(propertyfilepath);
 		
 		// typefb url
-				driver.get("https://tirupatibalaji.ap.gov.in/#/registration");
+		
+		
+				driver.get("https://www.toyota.co.uk/order-a-brochure");
 				driver.manage().window().maximize();
 
 		Thread.sleep(5000);
 		
-		//print aLL dropdown
+		clickbyLocator(loc.agr);
 		
-		printAllDropdownValues(loc.TTD_Country);
+		Thread.sleep(5000);
 		
-		System.out.println("***********************************************************************");
+	
+        WebElement radio = driver.findElement(By.xpath("//*[@id='delivery_method']/div/ul/li[2]/a"));
+        radio.click();
+
+		Thread.sleep(5000);
 		
-		// select customised option from dropdown and print it
 		
-		selectCustomiseOptionFromTheDropdownValues(loc.TTD_Country, "Jamaica");
 
 	}
-	
-	
 
 	@AfterClass
 	public void afterClass() {
