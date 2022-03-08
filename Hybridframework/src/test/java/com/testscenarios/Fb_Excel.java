@@ -27,22 +27,39 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Fb_Excel {
 
-	
-
 	@Test
 	public void f() throws Exception {
-    // Read test data from Excel 
-		String path = "./src/test/resources/testdata/td.xlsx";
+		// Read test data from Excel
+		String path = "C:\\Users\\Sathish SP\\git\\8ambatch\\Hybridframework\\src\\test\\resources\\testdata\\td.xlsx";
 		FileInputStream fi = new FileInputStream(path);
 		Workbook wb = new XSSFWorkbook(fi);
-		//Sheet s = wb.getSheetAt(0);
-		Sheet s = wb.getSheet("test");
-		Row r = s.getRow(1);
-		Cell c = r.getCell(0);
-		System.out.println(c.getStringCellValue());
+		// Sheet s = wb.getSheetAt(0);
+		Sheet s = wb.getSheet("login");
 		
-	}
+		//Row r = s.getRow(3);
+//		Cell c = r.getCell(0);
+//		System.out.println(c.getStringCellValue());
 
-	
+		int lastRow = s.getLastRowNum();
+		System.out.println("Last Row Number " + lastRow);
+
+//		int lastCell = r.getLastCellNum();
+//		System.out.println("Last Cell Number" +lastCell);
+		
+		for (int i = 0; i <= lastRow; i++) {
+			Row row = s.getRow(i);
+			int lastCell = row.getLastCellNum();
+			
+			for (int j = 0; j < lastCell; j++ ) {
+				Cell cell = row.getCell(j);
+				String value = cell.getStringCellValue();
+				System.out.println(value);
+		
+			}
+			
+			System.out.println();
+		}
+
+	}
 
 }
