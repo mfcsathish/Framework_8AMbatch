@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,7 @@ import com.utilities.CommonFunctions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class sqta extends CommonFunctions {
+public class Click_UsingJavaScript extends CommonFunctions {
 
 	Locators loc = new Locators();
 
@@ -71,7 +72,7 @@ public class sqta extends CommonFunctions {
 		//driver.findElement(deleteicon).click();
 		
 		  
-		  clickUsingJavaScript(loc.deleteicon);
+		  clickUsingJavaScript(By.xpath("//table/tbody/tr[2]/td[6]/button"));
 
 		Thread.sleep(2000);
 

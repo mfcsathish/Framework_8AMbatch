@@ -16,6 +16,12 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 
-public class Utilities extends CommonFunctions {
+public class CallingVaues_Excelsheet extends CommonFunctions {
 	
 		
 	//Read the data from property file
@@ -74,18 +80,43 @@ public class Utilities extends CommonFunctions {
 	  driver.manage().window().maximize();
 	  
 	  
+	  //Calling from Excel Sheet
 	  
-	  sendkeysByAnyLocator(loc.FBlogin_Email_Editbox, prop.getProperty("username"));
+	  String path = "C:\\Users\\Sathish SP\\git\\8ambatch\\Hybridframework\\src\\test\\resources\\testdata\\td.xlsx";
+		FileInputStream fi = new FileInputStream(path);
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet s = wb.getSheet("login");
+		
+		Row r = s.getRow(1);
+		Cell c = r.getCell(0);
+		String un = c.getStringCellValue();
+		
+		Cell c2 = r.getCell(1);
+		String pw = c2.getStringCellValue();
 	  
-	  sendkeysByAnyLocator(loc.FBlogin_Password_Editbox, prop.getProperty("password"));
+	  sendkeysByAnyLocator(loc.FBlogin_Email_Editbox, un);
+	  
+	  sendkeysByAnyLocator(loc.FBlogin_Password_Editbox, pw);
 	  
 	  expicitwait(loc.FBlogin_Submit_button);
 	  
 	  clickbyLocator(loc.FBlogin_Submit_button);
 	  
+	  Thread.sleep(5000);
 	
+	  // Validate error Msg
 	  
-	   
+	  String errmsg = driver.findElement(By.xpath("//*[@id='loginform']/div[2]/div[2]/a")).getText();
+	  System.out.println(errmsg);
+	  
+	  if(errmsg.contains("Forgotten password") || errmsg.contains("Find your account and login")){
+	   System.out.println("Error Message displayed :Given credentials are invalid");
+	  }else {
+		  
+		  System.out.println("Error Message not displayed :Given credentials are valid");
+	  }
+	  
+	  
 	  
   }
 
