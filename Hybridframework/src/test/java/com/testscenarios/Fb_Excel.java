@@ -30,7 +30,7 @@ public class Fb_Excel {
 	@Test
 	public void f() throws Exception {
 		// Read test data from Excel
-		String path = "C:\\Users\\Sathish SP\\git\\8ambatch\\Hybridframework\\src\\test\\resources\\testdata\\td.xlsx";
+		String path = "C:\\Users\\Sathish SP\\git\\Framework_8AMbatch1\\Hybridframework\\src\\test\\resources\\testdata\\td.xlsx";
 		FileInputStream fi = new FileInputStream(path);
 		Workbook wb = new XSSFWorkbook(fi);
 		// Sheet s = wb.getSheetAt(0);

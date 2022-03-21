@@ -29,7 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 
-public class CallingVaues_Excelsheet extends CommonFunctions {
+public class CallingMultipleVaues_Excelsheet extends CommonFunctions {
 	
 		
 	//Read the data from property file
