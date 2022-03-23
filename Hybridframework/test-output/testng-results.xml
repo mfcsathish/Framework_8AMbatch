@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-21T09:23:47 IST" name="Default suite" finished-at="2022-03-21T09:24:02 IST" duration-ms="14793">
+  <suite started-at="2022-03-24T01:24:26 IST" name="Default suite" finished-at="2022-03-24T01:25:10 IST" duration-ms="43632">
     <groups>
     </groups>
-    <test started-at="2022-03-21T09:23:47 IST" name="Default test" finished-at="2022-03-21T09:24:02 IST" duration-ms="14793">
-      <class name="com.testscenarios.PopupHandle">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.testscenarios.PopupHandle@75d4a5c2]" started-at="2022-03-21T09:23:47 IST" name="beforeClass" finished-at="2022-03-21T09:23:50 IST" duration-ms="2614" status="PASS">
+    <test started-at="2022-03-24T01:24:26 IST" name="Default test" finished-at="2022-03-24T01:25:10 IST" duration-ms="43632">
+      <class name="com.testscenarios.Popup_Toyoto_calci">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.testscenarios.Popup_Toyoto_calci@3c46e67a]" started-at="2022-03-24T01:24:27 IST" name="beforeClass" finished-at="2022-03-24T01:24:30 IST" duration-ms="3240" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="f()[pri:0, instance:com.testscenarios.PopupHandle@75d4a5c2]" started-at="2022-03-21T09:23:50 IST" name="f" finished-at="2022-03-21T09:24:02 IST" duration-ms="12124" status="PASS">
+        <test-method signature="f()[pri:0, instance:com.testscenarios.Popup_Toyoto_calci@3c46e67a]" started-at="2022-03-24T01:24:30 IST" name="f" finished-at="2022-03-24T01:25:10 IST" duration-ms="40345" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- f -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.testscenarios.PopupHandle@75d4a5c2]" started-at="2022-03-21T09:24:02 IST" name="afterClass" finished-at="2022-03-21T09:24:02 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.testscenarios.Popup_Toyoto_calci@3c46e67a]" started-at="2022-03-24T01:25:10 IST" name="afterClass" finished-at="2022-03-24T01:25:10 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- com.testscenarios.PopupHandle -->
+      </class> <!-- com.testscenarios.Popup_Toyoto_calci -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

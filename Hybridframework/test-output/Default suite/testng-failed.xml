@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testscenarios.ReadDatafromExcel2_Simple">
+      <class name="com.testscenarios.Popup_Toyoto_calci">
         <methods>
-          <include name="beforeClass"/>
           <include name="f"/>
+          <include name="afterClass"/>
+          <include name="beforeClass"/>
         </methods>
-      </class> <!-- com.testscenarios.ReadDatafromExcel2_Simple -->
+      </class> <!-- com.testscenarios.Popup_Toyoto_calci -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

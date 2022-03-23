@@ -30,7 +30,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CommonFunctions extends BaseClass {
 	
-	/***************** browser **************************************/
+	/********************************** browser *********************************************************************************************************/
 
 	public void chromeBrowserLaunch() {
 		WebDriverManager.chromedriver().setup();
@@ -56,7 +56,7 @@ public class CommonFunctions extends BaseClass {
 		driver.manage().window().maximize();
 	}
 
-	/***************** SendKeys **************************************/
+	/******************************* SendKeys ***********************************************************************************************************/
 
 	public void sendkeysByAnyLocator(By locator, String inputdata) {
 
@@ -79,7 +79,7 @@ public class CommonFunctions extends BaseClass {
 	}
 	
 	
-	/***************** Click **************************************/
+	/********************************* Click ************************************************************************************************************/
 
 	public void clickbyLocator(By locator) {
 
@@ -100,7 +100,7 @@ public class CommonFunctions extends BaseClass {
 
 	}
 	
-	/************* Webdriver Wait ********************************/
+	/************************************ Webdriver Wait **************************************************************************************************/
 	
 	public void expicitwait(By locator) {
 	  
@@ -120,7 +120,7 @@ public class CommonFunctions extends BaseClass {
 
 
 
-/*********** Click Operation by Java Script **********/
+/******************************************* Click Operation by Java Script *****************************************************************************/
 
 public void clickUsingJavaScript(By locator) throws Exception {
 	WebElement element = driver.findElement(locator);
@@ -137,13 +137,71 @@ public void highlightElement(WebElement element) throws InterruptedException {
 
 }
 
-/*********** timestamp **********/
+
+/******************************************** Flash Operation by Java Script *****************************************************************************/
+
+
+public void flash(WebElement element, WebDriver driver) {
+	
+	String bgcolor = element.getCssValue("backgroundcolor");//green
+	
+	for(int i = 0; i < 500; i++) {
+		
+		changeColor("#000000", element , driver);//1
+		changeColor(bgcolor, element , driver);//2
+	}
+}
+
+
+private void changeColor(String color, WebElement element, WebDriver driver) {
+	
+	 js = ((JavascriptExecutor) driver);
+	
+	js.executeScript("arguments[0].style.backgroundColor = '" + color + "'", element);
+	
+	try {
+		
+		Thread.sleep(2000);
+	} catch (InterruptedException e) {
+		
+	}
+	
+}
+
+/**************************************** Scroll down Operation by Java Script ****************************************************************************/
+
+public  void scrolview(WebElement element, WebDriver driver) {
+
+	 js = ((JavascriptExecutor) driver);	
+	
+	js.executeScript("arguments[0].scrolview(true);", element);
+}
+
+
+public void scrolldownpage ( WebDriver driver) {
+
+ js = ((JavascriptExecutor) driver);
+	
+	js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+	
+	
+}
+
+
+
+/**************************************************** Timestamp ************************************************************************************/
+
+
 public String timestamp() {
 	Date d = new Date();
 	DateFormat df = new SimpleDateFormat("ddMMMyyy_HHmmss");
 	String timeTamp = df.format(d);
 	return timeTamp;
 }
+
+
+
+
 
 /****** takescreenshot ***********/
  
@@ -154,7 +212,12 @@ public void takeScreenshot() throws Exception {
 	System.out.println("Screenshot taken*** ");
 }
 
+
+
+
 /****** takescreenshot and capture with folder name, clas name and method name***********/
+
+
 
 public void takeScreenshot(ITestResult res) throws Exception {
 	projectDir = System.getProperty("user.dir");
@@ -175,7 +238,10 @@ public void takeScreenshot(ITestResult res) throws Exception {
 
 }
 
+
+
 /****************** Dropdown selection **************************************/
+
 
 public void selectByVisibleText(By locater, String visibleText) {
 
@@ -279,7 +345,8 @@ public void selectCustomiseOptionFromTheDropdownValues(By locater, String visibl
 }
 
 
-/************************* Actions ************/
+/************************* Actions *******************************************************************/
+
 
 public void moveToOnElement(By locator) {
 	actions = new Actions(driver);
@@ -356,7 +423,7 @@ public void dragandDrop(By sourceelementLocator, By destinationelementLocator) {
 }
 
 
-/******************** Frames Handling *******************/
+/******************** Frames Handling *********************************************************************************/
 
 public int iframeCount() {
 	driver.switchTo().defaultContent();
